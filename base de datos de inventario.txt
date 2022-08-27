@@ -1,0 +1,230 @@
+Create database ItemLock
+use ItemLock
+
+create table Producto(
+id int identity(1,1),
+Nombre_producto varchar(50)not null,
+Codigo varchar(50)not null,
+idcState int,
+Fecha  date,
+Precio  decimal(10,2),
+Costo  decimal(10,2),
+Existencia int 
+primary key (id)
+);
+
+insert into Producto(Nombre_producto,Codigo,idcState,Fecha,Precio,Costo,Existencia)
+values ('vino tinto','abc','1','12-2-2022','700','600','30')
+
+insert into Producto(Nombre_producto,Codigo,idcState,Fecha,Precio,Costo,Existencia)
+values ('cafe','abd','2','12-2-2022','500','300','20')
+
+insert into Producto(Nombre_producto,Codigo,idcState,Fecha,Precio,Costo,Existencia)
+values ('agua','abe','3','12-2-2022','850','700','22')
+
+insert into Producto(Nombre_producto,Codigo,idcState,Fecha,Precio,Costo,Existencia)
+values ('cerveza','abf','1','12-2-2022','1000','800','50')
+
+insert into Producto(Nombre_producto,Codigo,idcState,Fecha,Precio,Costo,Existencia)
+values ('leche','abg','2','12-2-2022','700','500','18')
+
+insert into Producto(Nombre_producto,Codigo,idcState,Fecha,Precio,Costo,Existencia)
+values ('pan','abh','3','12-2-2022','50','20','45')
+
+insert into Producto(Nombre_producto,Codigo,idcState,Fecha,Precio,Costo,Existencia)
+values ('arroz','abi','1','12-2-2022','400','250','15')
+
+insert into Producto(Nombre_producto,Codigo,idcState,Fecha,Precio,Costo,Existencia)
+values ('queso','abj','2','12-2-2022','2000','1700','11')
+
+insert into Producto(Nombre_producto,Codigo,idcState,Fecha,Precio,Costo,Existencia)
+values ('jugo de naranja','abk','3','12-2-2022','1000','800','9')
+
+insert into Producto(Nombre_producto,Codigo,idcState,Fecha,Precio,Costo,Existencia)
+values ('manzana','abm','1','12-2-2022','500','300','7')
+
+create table Entrada(
+id int identity(1,1),
+fecha date,
+total decimal(10,2),
+idState int 
+primary key (id)
+);
+
+insert into Entrada(fecha,total,idState)
+values ('8-6-2022','30','1')
+
+insert into Entrada(fecha,total,idState)
+values ('7-6-2022','20','1')
+
+insert into Entrada(fecha,total,idState)
+values ('7-6-2022','22','1')
+
+insert into Entrada(fecha,total,idState)
+values ('8-6-2022','50','1')
+
+insert into Entrada(fecha,total,idState)
+values ('7-6-2022','18','1')
+
+insert into Entrada(fecha,total,idState)
+values ('6-6-2022','45','1')
+
+insert into Entrada(fecha,total,idState)
+values ('8-6-2022','15','1')
+
+insert into Entrada(fecha,total,idState)
+values ('8-6-2022','11','1')
+
+insert into Entrada(fecha,total,idState)
+values ('7-6-2022','9','1')
+
+insert into Entrada(fecha,total,idState)
+values ('7-6-2022','7','1')
+
+
+
+Create table detalle_entrada(
+id int identity(1,1),
+id_entrada int,
+precio_unitario decimal(10,2),
+costo_unitario decimal(10,2),
+cantidad int,
+id_producto int
+primary key (id)
+foreign key (id_entrada) references Entrada(id)
+)
+
+insert into detalle_entrada(id_entrada,precio_unitario,costo_unitario,cantidad,id_producto)
+values  ('1','115','95','30','1')
+
+insert into detalle_entrada(id_entrada,precio_unitario,costo_unitario,cantidad,id_producto)
+values  ('1','80','60','20','1')
+
+insert into detalle_entrada(id_entrada,precio_unitario,costo_unitario,cantidad,id_producto)
+values  ('1','90','70','22','1')
+
+insert into detalle_entrada(id_entrada,precio_unitario,costo_unitario,cantidad,id_producto)
+values  ('1','160','140','50','1')
+
+insert into detalle_entrada(id_entrada,precio_unitario,costo_unitario,cantidad,id_producto)
+values  ('1','120','95','18','1')
+
+insert into detalle_entrada(id_entrada,precio_unitario,costo_unitario,cantidad,id_producto)
+values  ('1','5','2','45','1')
+
+insert into detalle_entrada(id_entrada,precio_unitario,costo_unitario,cantidad,id_producto)
+values  ('1','40','25','15','1')
+
+insert into detalle_entrada(id_entrada,precio_unitario,costo_unitario,cantidad,id_producto)
+values  ('1','200','170','11','1')
+
+insert into detalle_entrada(id_entrada,precio_unitario,costo_unitario,cantidad,id_producto)
+values  ('1','100','80','9','1')
+
+insert into detalle_entrada(id_entrada,precio_unitario,costo_unitario,cantidad,id_producto)
+values  ('1','50','30','7','1')
+
+
+create table venta(
+id int identity(1,1),
+total decimal(10,2),
+fecha date,
+idState int,
+primary key (id) 
+)
+
+insert into venta(total,fecha,idState)
+values ('500','5-5-2022','1')
+
+insert into venta(total,fecha,idState)
+values ('400','5-5-2022','1')
+
+insert into venta(total,fecha,idState)
+values ('410','5-5-2022','1')
+
+insert into venta(total,fecha,idState)
+values ('390','5-5-2022','1')
+
+insert into venta(total,fecha,idState)
+values ('200','5-5-2022','1')
+
+insert into venta(total,fecha,idState)
+values ('350','5-5-2022','1')
+
+insert into venta(total,fecha,idState)
+values ('225','5-5-2022','1')
+
+insert into venta(total,fecha,idState)
+values ('320','5-5-2022','1')
+
+insert into venta(total,fecha,idState)
+values ('270','5-5-2022','1')
+
+insert into venta(total,fecha,idState)
+values ('187','5-5-2022','1')
+
+
+Create table detalle_venta(
+id int identity(1,1),
+id_venta int,
+costo_unitario decimal(10,2),
+precio_unitario decimal(10,2),
+cantidad int,
+id_producto int
+primary key (id)
+foreign key (id_venta) references venta(id)
+)
+
+insert into detalle_venta(id_venta,costo_unitario,precio_unitario,cantidad,id_producto)
+values ('1','50','30','37','1')
+
+insert into detalle_venta(id_venta,costo_unitario,precio_unitario,cantidad,id_producto)
+values ('1','40','25','43','1')
+
+insert into detalle_venta(id_venta,costo_unitario,precio_unitario,cantidad,id_producto)
+values ('1','45','30','13','1')
+
+insert into detalle_venta(id_venta,costo_unitario,precio_unitario,cantidad,id_producto)
+values ('1','60','40','25','1')
+
+insert into detalle_venta(id_venta,costo_unitario,precio_unitario,cantidad,id_producto)
+values ('1','70','50','37','1')
+
+insert into detalle_venta(id_venta,costo_unitario,precio_unitario,cantidad,id_producto)
+values ('1','56','35','20','1')
+
+insert into detalle_venta(id_venta,costo_unitario,precio_unitario,cantidad,id_producto)
+values ('1','65','45','16','1')
+
+insert into detalle_venta(id_venta,costo_unitario,precio_unitario,cantidad,id_producto)
+values ('1','75','55','13','1')
+
+insert into detalle_venta(id_venta,costo_unitario,precio_unitario,cantidad,id_producto)
+values ('1','60','40','7','1')
+
+insert into detalle_venta(id_venta,costo_unitario,precio_unitario,cantidad,id_producto)
+values ('1','90','70','5','1')
+
+Create table cState(
+id int identity(1,1)primary key,
+Nombre varchar(50)
+);
+
+
+insert into cState(Nombre)
+values ('Activo')
+
+insert into cState(Nombre)
+values ('Inactivo')
+
+insert into cState(Nombre)
+values ('Eliminado')
+
+
+
+
+
+
+
+
+select * from Producto
